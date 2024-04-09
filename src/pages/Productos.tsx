@@ -6,7 +6,7 @@ import MenuBarIcon from "../icons/MenuBarIcon"
 import '../scss/productos.scss'
 import { Categoria as CategoriaType, Producto as ProductoType } from "../types"
 import Paginacion from "../components/Paginacion"
-import { buscarProductosPorNombre, obtenerProductosApi } from "../api/productosApi"
+import { buscarProductosPorNombre, obtenerProductosApi, obtenerProductosPorCategoriaApi } from "../api/productosApi"
 import axios from "axios"
 
 const Productos = () => {
@@ -17,6 +17,7 @@ const Productos = () => {
   const [totalPaginas, setTotalPaginas] = useState(0)
   const [buscador, setBuscador] = useState("")
   const [categorias, setCategorias] = useState<CategoriaType[]>([])
+  const [categoriaId, setCategoriaId] = useState(0)
 
   const handleBarraActiva = () => {
     if (barraActiva === "") {
@@ -71,6 +72,18 @@ const Productos = () => {
     obtenerProductos()
   }, [paginaActual])
 
+  useEffect(() => {
+    const obtenerProductosPorCategoria = async () => {
+      const data = await obtenerProductosPorCategoriaApi(categoriaId);
+
+      setProductos(data.content)
+      setPaginaActual(data.pageable.pageNumber)
+      setTotalPaginas(data.totalPages)
+    }
+    
+    obtenerProductosPorCategoria()
+  }, [categoriaId])
+
   return (
     <div className="contenedor productos-grid-area">
       <div className="productos-categoria">
@@ -85,8 +98,10 @@ const Productos = () => {
             {categorias?.map(categoria => (
               <Categoria 
                 key={categoria.id}
+                id={categoria.id}
                 nombre={categoria.nombre}
                 imagen={categoria.imagen}
+                setCategoriaId={setCategoriaId}
               />
             ))}
           </div>

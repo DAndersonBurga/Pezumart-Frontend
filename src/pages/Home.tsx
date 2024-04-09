@@ -55,6 +55,7 @@ const Home = () => {
           {categorias?.map(categoria => (
             <Categoria 
               key={categoria.id}
+              id={categoria.id}
               nombre={categoria.nombre}
               imagen={categoria.imagen}
             />

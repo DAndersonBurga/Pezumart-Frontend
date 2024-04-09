@@ -14,3 +14,8 @@ export const obtenerProductosPorIdApi = async (id: number) => {
     const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/producto/${id}`)
     return data;
 }
+
+export const obtenerProductosPorCategoriaApi = async (id: number) => {
+    const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/producto/categoria/${id}`)
+    return data;
+}
