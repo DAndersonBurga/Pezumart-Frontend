@@ -59,7 +59,7 @@ const Usuario = ({ id, nombreCompleto, imagenUrl, rol, setUsuarios, paginaActual
   return (
     <div className="usuario">
         <div className="usuario__imagen-contenedor">
-                <img className="usuario__imagen" src={imagenUrl} alt="imagen mono" />
+                <img className="usuario__imagen" src={imagenUrl} alt={`Imagen ${nombreCompleto}`} />
         </div>
 
         <div className="usuario__info">

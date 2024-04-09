@@ -13,6 +13,7 @@ import { lazy } from "react"
 import UsuarioEditar from "./pages/admin/UsuarioEditar"
 import ProductosDestacadosDashboard from "./pages/admin/ProductosDestacadosDashboard"
 import MisProductosDashBoard from "./pages/admin/MisProductosDashBoard"
+import ProtectedRouteAdmin from "./components/admin/ProtectedRouteAdmin"
 
 
 function App() {
@@ -37,12 +38,16 @@ function App() {
 
             <Route element={<ProtectedRouteLazy />}>
               <Route path="/admin/dashboard" element={<LayoutDashboard />}>
-                <Route index element={<UsuariosDashboardLazy />} />
-                <Route children path="productos" element={<ProductosDashboardLazy />}/>
-                <Route children path="usuarios/editar/:usuarioId" element={<UsuarioEditar />}/>
-                <Route children path="usuarios" element={<UsuariosDashboardLazy />}/>
-                <Route children path="categorias" element={<CategoriasDashboard />}/>
-                <Route children path="destacados" element={<ProductosDestacadosDashboard />}/>
+
+                <Route element={<ProtectedRouteAdmin />}>
+                  <Route index element={<UsuariosDashboardLazy />} />
+                  <Route children path="productos" element={<ProductosDashboardLazy />}/>
+                  <Route children path="usuarios/editar/:usuarioId" element={<UsuarioEditar />}/>
+                  <Route children path="usuarios" element={<UsuariosDashboardLazy />}/>
+                  <Route children path="categorias" element={<CategoriasDashboard />}/>
+                  <Route children path="destacados" element={<ProductosDestacadosDashboard />}/>
+                </Route>
+
                 <Route children path="mis-productos" element={<MisProductosDashBoard />}/>
               </Route>
             </Route>

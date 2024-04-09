@@ -73,6 +73,8 @@ const Home = () => {
                 imagenUrl={productoDestacado.producto.imagenes[0].imagenUrl}
                 nombre={productoDestacado.producto.nombre}
                 precio={productoDestacado.producto.precio}
+                nombreAutor={productoDestacado.producto.usuario.nombreCompleto}
+                imagenAutor={productoDestacado.producto.usuario.imagenUrl}
               />
             ))}
         </div>
@@ -107,6 +109,8 @@ const Home = () => {
                 imagenUrl={producto.imagenes[0].imagenUrl}
                 nombre={producto.nombre}
                 precio={producto.precio}
+                nombreAutor={producto.usuario.nombreCompleto}
+                imagenAutor={producto.usuario.imagenUrl}
               />
             ))}
         </div>

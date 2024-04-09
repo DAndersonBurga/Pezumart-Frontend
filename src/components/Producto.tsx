@@ -6,10 +6,12 @@ interface ProductoProps {
     nombre: string
     precio: number
     imagenUrl: string
+    nombreAutor: string
+    imagenAutor: string
 }
 
 
-const Producto = ({ id, nombre, precio, imagenUrl } : ProductoProps) => {
+const Producto = ({ id, nombre, precio, imagenUrl, nombreAutor, imagenAutor } : ProductoProps) => {
   return (
     <div className='producto'>
         <div className='producto-imagen-container'>
@@ -27,6 +29,10 @@ const Producto = ({ id, nombre, precio, imagenUrl } : ProductoProps) => {
                 <h3 className='producto-nombre'>{nombre}</h3>
             </Link>
             <p className='producto-precio'>${precio}</p>
+            <div className='producto-autor'>
+                <p className='producto-autor-nombre'>Autor: <span>{nombreAutor}</span></p>
+                <img className='producto-autor-imagen' src={imagenAutor} alt={`Autor ${nombreAutor}`} />
+            </div>
         </div>
     </div>
   )

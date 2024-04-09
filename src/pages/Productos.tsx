@@ -120,6 +120,8 @@ const Productos = () => {
                       imagenUrl={producto.imagenes[0].imagenUrl}
                       nombre={producto.nombre}
                       precio={producto.precio}
+                      nombreAutor={producto.usuario.nombreCompleto}
+                      imagenAutor={producto.usuario.imagenUrl}
                     />
                   ))
                 ) : (

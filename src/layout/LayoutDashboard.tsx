@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import "../scss/admin/dashboard.scss";
 import useAuth from "../hooks/useAuth";
 import { UserData } from "../types";
+import ROL from "../constants/rol";
 
 const LayoutDashboard = () => {
   const { pathname } = useLocation();
@@ -15,7 +16,7 @@ const LayoutDashboard = () => {
     setUser({} as UserData);
     setAutenticado(false);
     redirect("/admin/login");
-  }
+  };
 
   return (
     <div className="bg-white dashboard">
@@ -30,36 +31,51 @@ const LayoutDashboard = () => {
           </Link>
 
           <nav className="dashboard-nav">
-            <Link
-              className={`dashboard-nav__enlace ${
-                pathname === "/admin/dashboard/usuarios"
-                  ? "dashboard-nav__enlace--activo"
-                  : ""
-              }`}
-              to={"/admin/dashboard/usuarios"}
-            >
-              Usuarios
-            </Link>
-            <Link
-              className={`dashboard-nav__enlace ${
-                pathname === "/admin/dashboard/productos"
-                  ? "dashboard-nav__enlace--activo"
-                  : ""
-              }`}
-              to={"/admin/dashboard/productos"}
-            >
-              Productos
-            </Link>
-            <Link
-              className={`dashboard-nav__enlace ${
-                pathname === "/admin/dashboard/destacados"
-                  ? "dashboard-nav__enlace--activo"
-                  : ""
-              }`}
-              to={"/admin/dashboard/destacados"}
-            >
-              Destacados
-            </Link>
+            {user.rol === ROL.ADMINISTRADOR && (
+              <>
+                <Link
+                  className={`dashboard-nav__enlace ${
+                    pathname === "/admin/dashboard/usuarios"
+                      ? "dashboard-nav__enlace--activo"
+                      : ""
+                  }`}
+                  to={"/admin/dashboard/usuarios"}
+                >
+                  Usuarios
+                </Link>
+                <Link
+                  className={`dashboard-nav__enlace ${
+                    pathname === "/admin/dashboard/productos"
+                      ? "dashboard-nav__enlace--activo"
+                      : ""
+                  }`}
+                  to={"/admin/dashboard/productos"}
+                >
+                  Productos
+                </Link>
+                <Link
+                  className={`dashboard-nav__enlace ${
+                    pathname === "/admin/dashboard/destacados"
+                      ? "dashboard-nav__enlace--activo"
+                      : ""
+                  }`}
+                  to={"/admin/dashboard/destacados"}
+                >
+                  Destacados
+                </Link>
+                <Link
+                  className={`dashboard-nav__enlace ${
+                    pathname === "/admin/dashboard/categorias"
+                      ? "dashboard-nav__enlace--activo"
+                      : ""
+                  }`}
+                  to={"/admin/dashboard/categorias"}
+                >
+                  Categorias
+                </Link>
+              </>
+            )}
+
             <Link
               className={`dashboard-nav__enlace ${
                 pathname === "/admin/dashboard/mis-productos"
@@ -69,16 +85,6 @@ const LayoutDashboard = () => {
               to={"/admin/dashboard/mis-productos"}
             >
               Mis Productos
-            </Link>
-            <Link
-              className={`dashboard-nav__enlace ${
-                pathname === "/admin/dashboard/categorias"
-                  ? "dashboard-nav__enlace--activo"
-                  : ""
-              }`}
-              to={"/admin/dashboard/categorias"}
-            >
-              Categorias
             </Link>
           </nav>
         </section>
@@ -92,7 +98,7 @@ const LayoutDashboard = () => {
                   type="button"
                   className="user-info__logout"
                   onClick={handleClick}
-                  >
+                >
                   Cerrar Sesión
                 </button>
                 <img

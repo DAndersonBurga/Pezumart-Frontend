@@ -6,7 +6,7 @@ const SobreNosotros = () => {
         <h1 className="sobre-nosotros-heading">Sobre Nosotros</h1>
 
         <div className='sobre-nosotros-info'>
-            <img className='sobre-nosotros-imagen' src="https://www.xplora.eu/wp-content/uploads/como-escribir-web-sobre-nosotros.jpg" alt="Sobre nosotros imagen" />
+            <img className='sobre-nosotros-imagen' src="/img/sobre-nosotros.jpg" alt="Sobre nosotros imagen" />
 
             <p className='sobre-nosotros-texto'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque odio illo, recusandae excepturi sapiente aperiam neque hic molestiae totam repudiandae maxime corporis maiores, harum impedit quisquam similique exercitationem, facilis voluptatibus.</p>
 

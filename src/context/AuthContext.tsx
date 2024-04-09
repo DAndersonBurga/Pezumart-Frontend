@@ -71,7 +71,7 @@ const AuthContextProvider = () => {
 
             setUser(getUserDataFromToken(data.jwt));
 
-            navigate("/admin/dashboard");
+            navigate("/admin/dashboard/mis-productos");
         } else {
             toast.error("Usuario o contraseña incorrectos");
         }

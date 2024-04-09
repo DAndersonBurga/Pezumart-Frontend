@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react"
+import Modal from 'react-modal'
 import { Producto as ProductoType } from "../../types"
 import { pezumartApi } from "../../api/pezumartApi"
 import MiProducto from "../../components/admin/MiProducto"
 import Paginacion from "../../components/Paginacion"
 
+import { customStyles } from "../../helpers/modal"
 import '../../scss/admin/productosDashboard.scss'
+import CrearProductoForm from "../../components/admin/CrearProductoForm"
 
 const MisProductosDashBoard = () => {
 
@@ -12,6 +15,7 @@ const MisProductosDashBoard = () => {
   const [paginaActual, setPaginaActual] = useState(0)
   const [totalPaginas, setTotalPaginas] = useState(0)
   const [productosTotales, setProductosTotales] = useState(0)
+  const [modalActivo, setModalActivo] = useState(false)
 
   useEffect(() => {
     const obtenerMisProductos = async () => {
@@ -65,6 +69,33 @@ const MisProductosDashBoard = () => {
           <h2>No tienes productos</h2>
         )}
       </div>
+
+      <div className="productos-dashboard__agregar">
+          <button
+            type="button"
+            className="productos-dashboard__agregar-boton"
+            onClick={() => setModalActivo(true)}
+          >
+            +
+          </button>
+        </div>
+
+        <Modal 
+          style={customStyles}
+          isOpen={modalActivo}
+          onRequestClose={() => {
+            setModalActivo(false)
+          }}
+          contentLabel="Agregar Producto"
+        >
+          <CrearProductoForm 
+            setModalActivo={setModalActivo}
+            setPaginaActual={setPaginaActual}
+            setProductos={setProductos}
+            setProductosTotales={setProductosTotales}
+            setTotalPaginas={setTotalPaginas}
+          />
+        </Modal>
 
 
       {productos?.length > 0 && (
