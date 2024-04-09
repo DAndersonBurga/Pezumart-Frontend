@@ -1,0 +1,140 @@
+@use '../variables.scss' as v;
+@use '../mixins.scss' as m;
+
+.productos-dashboard {
+    padding: 3rem 1rem;
+    overflow-y: scroll;
+    height: calc(100vh - 100px);
+    
+    &__mensaje {
+        width: 30rem;
+        font-family: v.$fontPrimary;
+        text-align: center;
+        font-size: 2rem;
+        margin: 1rem;
+    }
+    &__heading {
+        font-family: v.$fontPrimary;
+        font-size: 2rem;
+        padding-bottom: 1.5rem;
+    }
+
+    &__grid {
+        display: flex;
+        gap: .5rem;
+    }
+
+    &__categoria {
+        width: 15rem;
+        position: absolute;
+
+        @include m.desktop { 
+            position: unset;
+            opacity: 1!important;
+            border: unset;
+        }
+
+        .categoria {
+            width: 13.9rem;
+            height: 5rem;
+        }
+
+        .categoria-imagen-contenedor {
+            width: 5rem;
+        }
+
+        .listado-categorias {
+            width: 14rem;
+        }
+    }
+
+    &__agregar {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 2rem;
+    }
+
+    &__agregar-boton {
+        background-color: v.$primary;
+        height: 4rem;
+        width: 4rem;
+        color: v.$white;
+        font-size: 3rem;
+        border-radius: 50%;
+    }
+
+    &__contenedor {
+        width: 100%;
+    }
+
+    &__buscador {
+        display: flex;
+        position: relative;
+        margin-bottom: 1rem;
+
+        .menubar-icon {
+            background-color: v.$primary;
+            margin-right: .5rem;
+
+            @include m.desktop { 
+                display: none;
+            }
+        }
+    }
+
+    &__buscador-img {
+        position: absolute;
+        display: flex;
+        width: 3rem;
+        align-items: center;
+        justify-content: center;
+        background-color: v.$secondary;
+        height: 55.4px;
+        right: 0;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        &:hover {
+            cursor: pointer;
+        }
+
+        img {
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+
+    &__input {
+        width: 100%;
+        border: 1px solid v.$primary;
+        padding: 1rem .5rem;
+        border-radius: 5px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        font-size: 1rem;
+        font-family: v.$fontPrimary;
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+
+    &__productos {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+
+        @include m.desktopXL{ 
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include m.desktop2XL{ 
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    &__mis-productos {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

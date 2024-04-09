@@ -1,0 +1,81 @@
+@use '../variables.scss' as v;
+@use '../mixins.scss' as m;
+
+.usuario {
+    display: flex;
+    flex-direction: column;
+    height: 25rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+   
+
+    &__imagen-contenedor {
+        overflow: hidden;
+        margin-bottom: 1rem;
+        padding: .5rem;
+        
+        &:hover {
+            cursor: pointer;
+            
+            .usuario__imagen {
+                transform: scale(1.1);
+            }
+        }
+    }
+    
+    &__imagen {
+        transition: all 0.3s ease-in-out;
+        object-fit: fill;
+        width: 100%;
+
+        @include m.desktop { 
+            height: 100%;
+        }
+    }
+
+    &__info {
+        padding: 0 1rem;
+        padding-bottom: 1rem;
+        font-family: v.$fontPrimary;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    &__nombre {
+        font-weight: 900;
+        font-size: 2rem;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        text-wrap: wrap;
+    }
+
+    &__rol {
+        font-weight: 400;
+        font-size: 1rem;
+    }
+
+    &__botones {
+        display: flex;
+        padding: 0 1rem;
+        justify-content: space-between;
+        padding-bottom: 1rem;
+    }
+
+    
+    &__boton {
+        padding: 1rem;
+        font-weight: bold;
+        background-color: v.$primary;
+        color: v.$white;
+
+        &--eliminar {
+            background-color: v.$secondary;
+        }
+    }
+}

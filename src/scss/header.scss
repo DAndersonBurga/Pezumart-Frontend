@@ -1,0 +1,129 @@
+@use 'variables.scss' as v;
+@use 'mixins.scss' as m;
+
+.header {
+    background-color: v.$primary;
+    width: 100%;
+    padding: 1.5rem;
+
+    &__grid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        flex-direction: column;
+
+        @include m.tablet { 
+            flex-direction: row;
+        }
+    }
+
+    .logo-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+        color: v.$white;
+        font-family: v.$fontPrimary;
+        font-weight: 900;
+
+        span {
+            color: v.$secondary;
+        }
+    }
+
+    .menu-bar {
+        display: block;
+
+        @include m.tablet { 
+            display: none;
+        }
+    }
+
+    .navegacion {
+        display: flex;   
+        gap: 2.2rem;
+        align-items: center;
+        position: absolute;
+        top: -100%;
+        flex-direction: column;
+
+        @include m.tablet { 
+            display: flex;
+            flex-direction: row;
+            position: inherit;
+        }
+
+        &__link {
+            font-size: 1.2rem;
+            color: v.$white;
+            font-family: v.$fontPrimary;
+            font-weight: bold;
+            position: relative;
+            padding: 1rem 0;
+            opacity: .85;
+            text-wrap: wrap;
+
+            @include m.desktop{ 
+                text-wrap: nowrap;
+            }
+            
+            &:hover {
+                &::before {
+                    content: '';
+                    position: absolute;
+                    background-color: v.$secondary;
+                    width: 100%;
+                    height: .2rem;
+                    bottom: -.4rem;
+                    animation: borderAnimado .5s forwards;
+                }
+            }
+
+            &--active {
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    background-color: v.$secondary;
+                    width: 100%;
+                    height: .2rem;
+                    bottom: -.4rem;
+                }
+            }
+        }
+
+        &--activa {
+            position: inherit;
+            animation: navegacionActiva 1s forwards;
+        }
+    }
+
+
+    @keyframes borderAnimado {
+        from {
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0%);
+        }
+    }
+
+    @keyframes navegacionActiva {
+        from {
+            opacity: 0;
+            transform: translateY(-10%);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0%);
+        }
+    }
+}

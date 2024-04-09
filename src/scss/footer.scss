@@ -1,0 +1,80 @@
+@use 'variables.scss' as v;
+@use 'mixins.scss' as m;
+
+.footer {
+    font-family: v.$fontPrimary;
+    background-color: v.$primary;
+    color: v.$white;
+
+    .grid {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem 0;
+        gap: 2rem;
+
+        @include m.tablet { 
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: space-between;
+        }
+        
+    }
+
+    .titulo {
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+
+    .caja {
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+
+        .texto {
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+            font-size: 1.2rem;
+            line-height: 2;
+            font-weight: 400;
+        }
+    }
+
+    .lista-redsocial {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        width: 100%;
+
+        .redsocial {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid v.$white;
+            padding: .4rem;
+            transition: all .3s ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+                background-color: v.$white;
+                color: v.$primary;
+            }
+        }
+    }
+
+    .copyright {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.2rem;
+        align-items: center;
+        border-top: .1px solid #e1e1e16b;
+        font-weight: 400;
+        gap: 1rem;
+
+        span {
+            font-weight: bold;
+            color: v.$secondary;
+        }
+    }
+}

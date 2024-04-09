@@ -1,0 +1,48 @@
+@use '../variables.scss' as v;
+@use '../mixins.scss' as m;
+
+.usuarios {
+    position: relative;
+    overflow-y: scroll;
+    padding: 3rem 2rem;
+    padding-bottom: 0;
+    height: calc(100vh - 100px);
+
+    &__total {
+        font-family: v.$fontPrimary;
+        padding-bottom: 1.5rem;
+        font-size: 2rem;
+        font-weight: 900;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+
+        @media (min-width: 1200px) { 
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include m.desktop2XL { 
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+
+    &__agregar {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 2rem;
+    }
+
+    &__agregar-boton {
+        background-color: v.$primary;
+        height: 4rem;
+        width: 4rem;
+        color: v.$white;
+        font-size: 3rem;
+        border-radius: 50%;
+    }
+}
+

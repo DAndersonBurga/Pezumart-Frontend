@@ -1,0 +1,22 @@
+@use 'variables.scss' as v;
+
+.paginacion {
+    display: flex;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+    gap: 2rem;
+    font-family: v.$fontPrimary;
+    align-items: center;
+
+    &__boton {
+        background-color: v.$terciary;
+        border-radius: 5px;
+        padding: .5rem 1rem;
+        color: v.$white;
+    }
+
+    &__pagina {
+        font-weight: 900;
+    }
+}

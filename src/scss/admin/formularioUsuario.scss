@@ -1,0 +1,76 @@
+@use '../variables.scss' as v;
+
+.form-contenedor {
+    overflow-y: scroll;
+    height: calc(100vh - 100px);
+    padding: 0 1rem;
+}
+
+.form-usuario {
+    font-family: v.$fontPrimary;
+
+    &__heading {
+        text-align: center;
+        font-weight: 900;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    &__campo {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        font-weight: bold;
+    }
+
+    &__input {
+        padding: .5rem;
+        border-radius: 5px;
+        border: 1px solid v.$terciary;
+        font-weight: bold;
+        margin-bottom: .5rem;
+
+        &:focus {
+            outline: none;
+        }
+
+        &--submit {
+            background-color: v.$primary;
+            color: white;
+            border: none;
+            padding: .5rem 1rem;
+            margin: 0;
+            margin-top: 2rem;
+            width: 100%;
+            cursor: pointer;
+            transition: all .3s ease-in-out;
+
+            &:hover {
+                background-color: v.$secondary;
+            }
+        }
+    }
+
+    &__label {
+        font-weight: bold;
+    }
+
+    &__select {
+        padding: .5rem;
+        margin: .4rem 0;
+        border-radius: 5px;
+        border: 1px solid v.$terciary;
+        font-weight: bold;
+    }
+
+    &__imagen-contenedor {
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+
+        .custom-file-upload {
+            padding: .5rem;    
+        }
+    }
+
+}

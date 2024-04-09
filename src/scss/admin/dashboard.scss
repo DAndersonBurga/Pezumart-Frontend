@@ -1,0 +1,136 @@
+@use '../variables.scss' as v;
+@use '../mixins.scss' as m;
+
+.dashboard {
+    height: 100vh;
+    overflow: hidden;
+
+    &__grid  {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+    }
+}
+
+.header-dashboard {
+    background-color: v.$secondary;
+    height: 4rem;
+    width: 100%;
+    font-family: v.$fontPrimary;
+    display: flex;
+    align-items: center;
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+        margin: 0 1.5rem;
+
+        &__nombre {
+            color: v.$white;
+        }
+
+        &__imagen {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            border: 2px solid v.$white;
+        }
+
+        &__contenedor {
+            display: flex;
+            gap: 1rem;
+        }
+
+        &__logout {
+            color: v.$white;
+            font-weight: 900;
+        }
+    }
+}
+
+.dashboard-navegacion {
+    background-color: v.$primary;
+    height: 100vh;
+
+    .nav-button {
+        position: absolute;
+        background-color: v.$primary;
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        padding: 1rem;
+        font-size: 2rem;
+        color: v.$white;
+        font-family: v.$fontPrimary;
+        font-weight: 900;
+        margin-bottom: 1.5rem;
+
+        span {
+            color: v.$secondary;
+        }
+
+        svg:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.dashboard-nav {
+    display: flex;
+    flex-direction: column;
+
+    &__enlace {
+        position: relative;
+        color: v.$white;
+        padding: 1rem;
+        padding-left: 2rem;
+        font-family: v.$fontPrimary;
+        font-weight: bold;
+        font-size: 1.3rem;
+        transition: all .3s ease-in-out;
+        
+        &:hover {
+            background-color: v.$secondary;
+
+            &::before {
+                animation: fadeIn .4s ease-in-out;
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                background-color: v.$white;
+                width: 5px;
+                height: 100%;
+            }
+        }
+
+        &--activo {
+            background-color: v.$secondary;
+
+            &::before {
+                animation: fadeIn .4s ease-in-out;
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                background-color: v.$white;
+                width: 5px;
+                height: 100%;
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

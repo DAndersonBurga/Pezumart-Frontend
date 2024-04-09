@@ -1,0 +1,103 @@
+@use 'variables.scss' as v;
+@use 'mixins.scss' as m;
+
+.hero {
+    background-color: v.$primary;
+
+    @include m.tablet { 
+        height: 40rem;    
+    }
+
+    &-grid {
+        display: flex;
+        flex-direction: column;
+
+        @include m.tablet { 
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    &-image-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        height: 40rem;
+    }
+
+    &-image {
+        height: 38rem;
+
+        animation: move 2s linear infinite;
+    }
+
+    &-info {
+        font-family: v.$fontPrimary;
+        color: v.$white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+
+        @include m.tablet { 
+            padding: 4rem 6rem 4rem 3rem;
+        }
+    }
+
+    &-titulo {
+        font-size: 3.2rem;
+        font-weight: 900;
+        margin-bottom: 2rem;
+    }
+
+    &-texto {
+        font-size: 1.2rem;
+        font-weight: 500;
+        max-width: 90%;
+        line-height: 1.5;
+        margin-bottom: 2rem;
+    }
+
+    &-botones {
+        display: flex;
+        gap: 1rem;
+    }
+
+    &-boton {
+        padding: 1rem 3rem;
+        background-color: v.$secondary;
+        color: v.$white;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: 1px solid v.$secondary;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+            background-color: transparent;
+            color: v.$secondary;
+        }
+
+        &:last-child {
+            background-color: v.$white;
+            color: v.$black;
+            border: 1px solid v.$white;
+
+            &:hover {
+                background-color: transparent;
+                color: v.$white;
+            }
+        }
+    }
+}
+
+@keyframes move {
+    0% {
+        transform: translateX(0); /* Comienza desde la posición actual */
+    }
+    50% {
+        transform: translateX(40px); /* Mueve hacia la derecha */
+    }
+    100% {
+        transform: translateX(0); /* Vuelve a la posición inicial */
+    }
+}

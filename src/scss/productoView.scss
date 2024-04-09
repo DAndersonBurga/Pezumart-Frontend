@@ -1,0 +1,197 @@
+@use 'variables.scss' as v;
+@use 'mixins.scss' as m;
+
+.productoview {
+    padding: 3rem 0;
+    font-family: v.$fontPrimary;
+    overflow: hidden;
+
+    &__heading {
+        position: relative;
+        text-align: center;
+        font-weight: 900;
+        font-size: 3rem;
+        padding-bottom: 1rem;
+        color: v.$terciary;
+
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+
+        @include m.desktop { 
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+        }
+        
+    }
+
+    &__imagenes {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        margin-bottom: 2rem;
+
+        @include m.desktop { 
+            margin-bottom: 0;
+        }
+    }
+
+
+    &__imagen-principal-contenedor {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 20rem;
+        width: 20rem;
+        margin-bottom: 2rem;
+
+        @include m.tablet { 
+            height: 30rem;
+            width: 30rem;
+        }
+    }
+
+    &__imagen-principal {
+        display: block;
+        position: relative;
+        height: 20rem;
+        width: 20rem;
+        object-fit: cover;
+    }
+
+    &__imagen-principal-magnificada {
+        border: 1px solid v.$primary;
+        height: 30rem;
+        width: 30rem;
+    }
+
+
+    &__imagenes-contenedor {
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+    }
+
+    &__imagen {
+        height: 6rem;
+        width: 6rem;
+    }   
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__nombre {
+        font-size: 2rem;
+        font-weight: 900;
+        color: v.$terciary;
+    }
+
+    &__precio {
+        font-size: 3rem;
+        font-weight: 900;
+        color: v.$terciary;
+    }
+
+    &__descripcion {
+        font-size: 1.3rem;
+        line-height: 1.5;
+        color: v.$terciary;
+    }
+
+    &__stock {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: v.$terciary;
+
+        span {
+            font-weight: 400;
+        }
+    }
+
+    &__autor-contenedor {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__autor {
+        font-size: 1.3rem;
+        color: v.$terciary;
+        font-weight: 900;
+
+        span {
+            font-weight: 400;
+        }
+    }
+
+    &__imagen-autor {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+    }
+
+    &__fecha {
+        font-size: 1.3rem;
+        color: v.$terciary;
+        font-weight: 900;
+
+        span {
+            font-weight: 400;
+        }
+    }
+
+    &__form {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    &__cantidad-text {
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: v.$terciary;
+        margin-right: 2rem;
+    }
+
+    &__cantidad {
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: v.$terciary;
+    }
+
+    &__boton-cantidad {
+        height: 3rem;
+        width: 3rem;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: v.$white;
+        background-color: v.$primary;
+    }
+
+    &__boton-comprar {
+        display: block;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: v.$white;
+        background-color: v.$terciary;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background-color: v.$secondary;
+        }
+    }
+}

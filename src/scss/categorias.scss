@@ -1,0 +1,91 @@
+@use 'mixins.scss' as m;
+@use 'variables.scss' as v;
+
+.categorias {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
+    &-grid {
+        margin-top: 2rem;
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: 1fr;
+        
+        @include m.mobile { 
+        }
+        
+        @include m.tablet { 
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include m.desktop { 
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    &-heading {
+        display: flex;
+        font-family: v.$fontPrimary;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        align-items: center;
+        color: v.$terciary;
+        gap: 1rem;
+
+        span {
+            width: 100%;
+            border-bottom: 1px dotted v.$black;
+            display: inline-block;
+        }
+    }
+}
+
+.categoria {
+    background-color: v.$white;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    height: 7rem;
+    transition: all .4s ease-in-out;
+
+    &:hover {
+        cursor: pointer;
+        background-color: v.$secondary;
+        color: v.$white;
+
+        .categoria-imagen {
+            scale: 1.2;
+            transform: rotate(5deg);
+        }
+    }
+
+    &-imagen-contenedor {
+        display: flex;
+        overflow: hidden;
+    }
+
+    &-imagen {
+        object-fit: cover;
+        transition: all .3s ease-in-out;
+        width: 20rem;
+    }
+
+    &-info {
+        display: flex;
+        align-items: flex-start;
+        padding-left: 2rem;
+        flex-direction: column;
+        justify-content: center;
+        gap: .5rem;
+        font-family: v.$fontPrimary
+    }
+
+    &-nombre {
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+
+    &-cantidad {
+        font-size: 1rem;
+        opacity: .8;
+    }
+}

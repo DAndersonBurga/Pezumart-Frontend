@@ -1,0 +1,129 @@
+@use '../variables.scss' as v;
+@use '../mixins.scss' as m;
+
+.producto-dashboard {
+    background-color: v.$white;
+    transition: all .4s ease-in-out;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+
+    &-imagen-container {
+        overflow: hidden;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    &-imagen {
+        transition: all .3s ease-in-out;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    &:hover {
+        box-shadow: 0 0 30px #ddd;
+
+        .producto-dashboard-imagen {
+            transform: scale(1.15);
+        }
+    }
+}
+
+.producto-dashboard-info {
+    padding: 1rem;
+    font-family: v.$fontPrimary;
+
+    &__nombre {
+        font-size: 1.5rem;
+        padding-bottom: .5rem;
+        text-align: center;
+        font-weight: 900;
+        color: v.$secondary;
+    }
+
+    &__precio {
+        font-size: 2rem;
+        text-align: center;
+        font-weight: 900;
+    }
+
+    &__descripcion {
+        font-size: .9rem;
+        padding-top: .5rem;
+        text-align: center;
+        margin-bottom: .5rem;
+    }
+
+    &__fecha {
+        text-align: center;
+        font-weight: 900;
+        font-size: .9rem;
+        margin-bottom: .5rem;
+
+        span {
+            font-weight: 400;
+        }
+    }
+
+    &__cantidad-disponible {
+        text-align: center;
+        font-size: .9rem;
+        margin-bottom: .5rem;
+        font-weight: bold;
+
+        span {
+            font-weight: 400;
+        }
+    }
+
+    &__autor {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-bottom: .8rem;
+    }
+
+    &__autor-nombre {
+        font-size: .9rem;
+        font-weight: bold;
+
+        span {
+            font-weight: 400;
+        }
+    }
+
+    &__autor-imagen {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        border: 1px solid v.$primary;
+    }
+
+    &__botones {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    &__boton-destacado {
+        color: v.$white;
+        background-color: v.$primary;
+        border-radius: 5px;
+        padding: .8rem 1.5rem;
+    }
+
+    &__boton-eliminar {
+        color: v.$white;
+        background-color: v.$secondary;
+        border-radius: 5px;
+        padding: .8rem 1.5rem;
+    }
+
+    &__boton-destacado,
+    &__boton-eliminar {
+        transition: opacity .3s ease-in-out;
+
+        &:hover {
+            opacity: .85;
+        }
+    }
+}

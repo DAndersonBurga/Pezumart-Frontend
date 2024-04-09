@@ -1,0 +1,61 @@
+@use 'variables.scss' as v;
+@use 'mixins.scss' as m;
+
+.mySwiper {
+  height: 30rem;
+}
+
+.slide-container {
+  display: flex;
+  height: 30rem;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://cdn.pixabay.com/photo/2020/07/08/04/12/work-5382501_1280.jpg");
+  justify-content: center;
+  align-items: center;
+  font-family: v.$fontPrimary;
+
+  .slide-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: v.$white;
+    width: 30rem;
+
+    @include m.tablet { 
+      width: 40rem;
+    }
+  }
+
+  .slide-titulo {
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 3.2rem;
+    font-weight: 400;
+  }
+
+  .slide-texto {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+
+    padding: 0 1rem;
+    @include m.tablet { 
+      padding: 0;
+    }
+  }
+
+  .slide-button {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: v.$white;
+    padding: 1rem 2rem;
+    border: 1px solid v.$white;
+    transition: all .3s ease-in-out; 
+
+    &:hover {
+      color: v.$black;
+      background-color: v.$white;
+    }
+  }
+}

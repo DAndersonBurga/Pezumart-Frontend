@@ -1,0 +1,50 @@
+@use 'mixins.scss' as m;
+@use 'variables.scss' as v;
+
+.servicios {
+    display: grid;
+    gap: .5rem;
+    padding: 1.2rem 0;
+
+    @include m.tablet { 
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+        padding: 3rem 0;
+    }
+
+    @include m.desktop { 
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+}
+
+.servicio {
+    display: flex;
+    justify-content: center;
+    font-family: v.$fontPrimary;
+    align-items: center;
+    background-color: v.$white;
+    padding: 1rem;
+    gap: 1rem;
+    
+    @include m.mobile { 
+        padding: 2rem 1rem;
+        justify-content: flex-start;
+    }
+
+    &-imagen {
+      height: 4rem;
+      width: 4rem;
+
+      svg {
+        color: red;
+        fill: red;
+      }
+    }
+
+    &-heading {
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+}
