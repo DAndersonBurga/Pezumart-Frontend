@@ -53,12 +53,16 @@ const Home = () => {
 
         <div className="categorias-grid">
           {categorias?.map(categoria => (
-            <Categoria 
+            <Link
               key={categoria.id}
-              id={categoria.id}
-              nombre={categoria.nombre}
-              imagen={categoria.imagen}
-            />
+              to={"/productos?categoria=" + categoria.id}
+            >
+              <Categoria 
+                id={categoria.id}
+                nombre={categoria.nombre}
+                imagen={categoria.imagen}
+              />
+            </Link>
           ))}
         </div>
       </section>

@@ -8,8 +8,12 @@ import { Categoria as CategoriaType, Producto as ProductoType } from "../types"
 import Paginacion from "../components/Paginacion"
 import { buscarProductosPorNombre, obtenerProductosApi, obtenerProductosPorCategoriaApi } from "../api/productosApi"
 import axios from "axios"
+import { useLocation } from "react-router-dom"
 
 const Productos = () => {
+
+  const { search } = useLocation()
+  const categoria = +search.split("=")[1]
 
   const [barraActiva, setBarraActiva] = useState("")
   const [productos, setProductos] = useState<ProductoType[]>([])
@@ -18,6 +22,7 @@ const Productos = () => {
   const [buscador, setBuscador] = useState("")
   const [categorias, setCategorias] = useState<CategoriaType[]>([])
   const [categoriaId, setCategoriaId] = useState(0)
+  const [componenteCargado, setComponenteCargado] = useState(false)
 
   const handleBarraActiva = () => {
     if (barraActiva === "") {
@@ -42,26 +47,6 @@ const Productos = () => {
   }
 
   useEffect(() => {
-
-    const obtenerCategorias = async () => {
-      const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/categoria/listar`)
-      return data
-    }
-
-    const obtenerData = async () => {
-      const [productosData, categoriasData] = await Promise.all([obtenerProductosApi(), obtenerCategorias()])
-
-      setProductos(productosData.content)
-      setPaginaActual(productosData.pageable.pageNumber)
-      setTotalPaginas(productosData.totalPages)
-      setCategorias(categoriasData)
-    }
-
-    obtenerData()
-
-  }, [])
-
-  useEffect(() => {
     const obtenerProductos = async () => {
       const data = await obtenerProductosApi(paginaActual);
       setProductos(data.content)
@@ -69,20 +54,51 @@ const Productos = () => {
       setTotalPaginas(data.totalPages)
     }
 
-    obtenerProductos()
+    if (componenteCargado) {
+      obtenerProductos()
+    }
   }, [paginaActual])
 
   useEffect(() => {
     const obtenerProductosPorCategoria = async () => {
       const data = await obtenerProductosPorCategoriaApi(categoriaId);
 
-      setProductos(data.content)
       setPaginaActual(data.pageable.pageNumber)
       setTotalPaginas(data.totalPages)
+      setProductos(data.content)
     }
     
-    obtenerProductosPorCategoria()
+    if(componenteCargado) {
+      obtenerProductosPorCategoria()
+    }
   }, [categoriaId])
+
+  useEffect(() => {
+
+    const obtenerCategorias = async () => {
+      const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/categoria/listar`)
+      return data
+    }
+
+    const obtenerData = async () => {
+      const [productosData, categoriasData] = await Promise.all([
+          categoria > 0 ? obtenerProductosPorCategoriaApi(categoria) : obtenerProductosApi(categoria)
+        , obtenerCategorias()])
+
+        
+        
+        setPaginaActual(productosData.pageable.pageNumber)
+        setTotalPaginas(productosData.totalPages)
+        setCategorias(categoriasData)
+
+        setProductos(productosData.content)
+      }
+
+    if(!componenteCargado) {
+      obtenerData()
+      setComponenteCargado(true)
+    }
+  }, [])
 
   return (
     <div className="contenedor productos-grid-area">

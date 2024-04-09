@@ -12,7 +12,7 @@ import Producto from "../../components/admin/Producto"
 import Categoria from "../../components/Categoria"
 import MenuBar from "../../icons/MenuBarIcon"
 import search from "../../../public/img/search.svg"
-import { buscarProductosPorNombre, obtenerProductosApi } from "../../api/productosApi"
+import { buscarProductosPorNombre, obtenerProductosApi, obtenerProductosPorCategoriaApi } from "../../api/productosApi"
 import axios from "axios"
 
 Modal.setAppElement('#root')
@@ -27,6 +27,7 @@ const ProductosDashboard = () => {
   const [barraActiva, setBarraActiva] = useState("")
   const [buscador, setBuscador] = useState("")
   const [categorias, setCategorias] = useState<CategoriaType[]>([])
+  const [categoriaId, setCategoriaId] = useState(0)
 
   useEffect(() => {
     const obtenerProductos = async () => {
@@ -66,6 +67,18 @@ const ProductosDashboard = () => {
     obtenerProductosPorPagina()
   }, [paginaActual])
 
+  useEffect(() => {
+    const obtenerProductosPorCategoria = async () => {
+      const data = await obtenerProductosPorCategoriaApi(categoriaId)
+
+      setProductos(data.content)
+      setPaginaActual(data.pageable.pageNumber)
+      setProductosTotales(data.totalElements)
+    }
+
+    obtenerProductosPorCategoria()
+  }, [categoriaId])
+
   const handleClickBuscarProductos = async () => {
     if(buscador === "") {
       const data = await obtenerProductosApi()
@@ -100,8 +113,10 @@ const ProductosDashboard = () => {
               {categorias?.map(categoria => (
                 <Categoria 
                   key={categoria.id}
+                  id={categoria.id}
                   nombre={categoria.nombre}
                   imagen={categoria.imagen}
+                  setCategoriaId={setCategoriaId}
                 />
               ))}
             </div>
