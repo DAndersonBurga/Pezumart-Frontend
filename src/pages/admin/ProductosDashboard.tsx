@@ -14,6 +14,7 @@ import MenuBar from "../../icons/MenuBarIcon"
 import search from "../../../public/img/search.svg"
 import { buscarProductosPorNombre, obtenerProductosApi, obtenerProductosPorCategoriaApi } from "../../api/productosApi"
 import axios from "axios"
+import { setTitleAndDescription } from "../../helpers/seo"
 
 Modal.setAppElement('#root')
 
@@ -30,6 +31,8 @@ const ProductosDashboard = () => {
   const [categoriaId, setCategoriaId] = useState(0)
 
   useEffect(() => {
+    setTitleAndDescription('Productos', 'Administra los productos de la tienda')
+
     const obtenerProductos = async () => {
       const { data } = await pezumartApi.get('/producto/listar')
       return data;

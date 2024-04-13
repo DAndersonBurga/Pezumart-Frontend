@@ -1,0 +1,17 @@
+@use '../variables.scss' as v;
+@use '../mixins.scss' as m;
+
+.categorias-dashboard {
+    padding: 2rem 3rem;
+
+    &__titulo {
+        font-family: v.$fontPrimary;
+        margin-bottom: 1rem;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: .5rem;
+    }
+}

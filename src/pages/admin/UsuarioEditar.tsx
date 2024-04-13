@@ -5,6 +5,7 @@ import { Rol } from "../../types";
 
 import "../../scss/admin/usuarioDetalles.scss";
 import { toast } from "react-toastify";
+import { setTitleAndDescription } from "../../helpers/seo";
 
 interface UsuarioDetallesType {
   id: number;
@@ -36,6 +37,8 @@ const UsuarioDetalles = () => {
   const id: number = parseInt(usuarioId || "0");
 
   useEffect(() => {
+    setTitleAndDescription("Editar Usuario", "Detalles del usuario");
+
     const obtenerUsuarioPorId = async () => {
       const response = await pezumartApi.get(`/usuario/${id}`);
 

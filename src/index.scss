@@ -60,3 +60,7 @@ button {
 .bg-white {
     background-color: v.$white;
 }
+
+.ReactModal__Overlay {
+    z-index: 1;
+}

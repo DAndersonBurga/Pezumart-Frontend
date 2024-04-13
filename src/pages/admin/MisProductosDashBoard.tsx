@@ -8,6 +8,7 @@ import Paginacion from "../../components/Paginacion"
 import { customStyles } from "../../helpers/modal"
 import '../../scss/admin/productosDashboard.scss'
 import CrearProductoForm from "../../components/admin/CrearProductoForm"
+import { setTitleAndDescription } from "../../helpers/seo"
 
 const MisProductosDashBoard = () => {
 
@@ -18,6 +19,8 @@ const MisProductosDashBoard = () => {
   const [modalActivo, setModalActivo] = useState(false)
 
   useEffect(() => {
+    setTitleAndDescription('Mis Productos', 'Administra tus productos')
+
     const obtenerMisProductos = async () => {
       const { data } = await pezumartApi.get('/producto/listar/mis-productos')
       setProductos(data.content)

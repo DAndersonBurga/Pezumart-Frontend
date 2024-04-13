@@ -2,6 +2,8 @@ import { toast, ToastContainer } from "react-toastify";
 import "../../scss/admin/auth.scss";
 import 'react-toastify/dist/ReactToastify.css';
 import useAuth from "../../hooks/useAuth";
+import { useEffect } from "react";
+import { setTitleAndDescription } from "../../helpers/seo";
 
 
 
@@ -28,6 +30,10 @@ const Login = () => {
         
         login(correo, password)
     }
+
+    useEffect(() => {
+      setTitleAndDescription('Login', 'Inicia sesión en Pezumart')
+    }, [])
 
   return (
     <div className="auth">

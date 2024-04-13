@@ -4,13 +4,15 @@ import { pezumartApi } from "../../api/pezumartApi"
 import ProductoDestacado from "../../components/admin/ProductoDestacado"
 
 import '../../scss/admin/productoDestacado.scss'
+import { setTitleAndDescription } from "../../helpers/seo"
 
 const ProductosDestacadosDashboard = () => {
 
   const [productosDestacados, setProductosDestacados] = useState<ProductoDestacadoType[]>([])
 
-
   useEffect(() => {
+    setTitleAndDescription('Productos Destacados', 'Administra los productos destacados')
+
     const obtenerProductosDestacados = async () => {
       const { data } = await pezumartApi.get('/producto/destacados')
       setProductosDestacados(data)

@@ -1,15 +1,17 @@
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import Slider from "../components/Slider"
 import Servicios from "../components/Servicios"
 import Categoria from "../components/Categoria"
 import Producto from '../components/Producto'
 
+
+import { Categoria as CategoriaType, ProductoDestacado, Producto as ProductoType } from "../types"
 import '../scss/categorias.scss'
 import '../scss/productos.scss'
 import '../scss/hero.scss'
-import { Categoria as CategoriaType, ProductoDestacado, Producto as ProductoType } from "../types"
-import { useEffect, useState } from "react"
 import axios from "axios"
+import { setTitleAndDescription } from "../helpers/seo"
 
 const Home = () => {
 
@@ -18,6 +20,8 @@ const Home = () => {
   const [categorias, setCategorias] = useState<CategoriaType[]>([])
 
   useEffect(() => {
+    setTitleAndDescription('Inicio', 'Bienvenido a la tienda en línea')
+
     const obtenerUltimosProductos = async () => {
       const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/producto/ultimos`)
       return data

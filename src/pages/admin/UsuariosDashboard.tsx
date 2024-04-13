@@ -13,6 +13,7 @@ import { customStyles } from "../../helpers/modal"
 
 import '../../scss/admin/usuarios.scss'
 import '../../scss/admin/formularioUsuario.scss'
+import { setTitleAndDescription } from "../../helpers/seo"
 
 Modal.setAppElement('#root')
 
@@ -29,6 +30,8 @@ const UsuariosDashboard = () => {
   const { user } = useAuth()
 
   useEffect(() => {
+
+    setTitleAndDescription('Usuarios', 'Administra los usuarios de la tienda')
 
     const fetchData = async () => {
       try {

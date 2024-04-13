@@ -1,6 +1,13 @@
+import { useEffect } from 'react'
 import '../scss/contacto.scss'
+import { setTitleAndDescription } from '../helpers/seo'
 
 const Contactanos = () => {
+
+    useEffect(() => {
+        setTitleAndDescription('Contactanos', 'Contactanos en Pezumart')
+    }, [])
+
   return (
     <section className="contacto contenedor">
         <form className="formulario">

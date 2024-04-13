@@ -9,6 +9,7 @@ import Paginacion from "../components/Paginacion"
 import { buscarProductosPorNombre, obtenerProductosApi, obtenerProductosPorCategoriaApi } from "../api/productosApi"
 import axios from "axios"
 import { useLocation } from "react-router-dom"
+import { setTitleAndDescription } from "../helpers/seo"
 
 const Productos = () => {
 
@@ -75,6 +76,8 @@ const Productos = () => {
 
   useEffect(() => {
 
+    setTitleAndDescription('Productos', 'Productos de Pezumart')
+    
     const obtenerCategorias = async () => {
       const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/categoria/listar`)
       return data

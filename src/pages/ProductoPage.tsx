@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import ReactImageMagnify from "@blacklab/react-image-magnify";
 import { obtenerProductosPorIdApi } from "../api/productosApi";
 import { ProductoDetalle } from "../types";
+import { setTitleAndDescription } from "../helpers/seo";
 
 
 const ProductoPage = () => {
@@ -15,6 +16,8 @@ const ProductoPage = () => {
   const [imagen, setImagen] = useState("");
 
   useEffect(() => {
+    setTitleAndDescription("Producto", "Detalles del producto")
+
     const obtenerProductoPorId = async () => {
       const id = productoId ? parseInt(productoId) : 0;
       const data = await obtenerProductosPorIdApi(id);

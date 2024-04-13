@@ -1,6 +1,13 @@
+import { useEffect } from 'react'
 import '../scss/nosotros.scss'
+import { setTitleAndDescription } from '../helpers/seo'
 
 const SobreNosotros = () => {
+
+  useEffect(() => {
+    setTitleAndDescription('Sobre Nosotros', 'Conoce más sobre nosotros')
+  }, [])
+
   return (
     <section className="sobre-nosotros contenedor">
         <h1 className="sobre-nosotros-heading">Sobre Nosotros</h1>
