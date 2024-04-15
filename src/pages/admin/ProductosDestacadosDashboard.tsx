@@ -24,20 +24,24 @@ const ProductosDestacadosDashboard = () => {
     <div className="productos-destacados">
       <h1 className="productos-destacados__titulo">Productos Destacados</h1>
       <div className="productos-destacados__grid">
-        {productosDestacados?.map(producto => (
-          <ProductoDestacado 
-            key={producto.id}
-            nombre={producto.producto.nombre}
-            id={producto.id}
-            imagen={producto.producto.imagenes[0].imagenUrl}
-            descripcion={producto.producto.descripcion}
-            precio={producto.producto.precio}
-            imagenAutor={producto.producto.usuario.imagenUrl}
-            nombreAutor={producto.producto.usuario.nombreCompleto}
-            publicado={producto.producto.fechaCreacion}
-            setProductosDestacados={setProductosDestacados}
-          />
-        ))}
+        {productosDestacados?.length > 0 ? (
+          productosDestacados?.map(producto => (
+            <ProductoDestacado 
+              key={producto.id}
+              nombre={producto.producto.nombre}
+              id={producto.id}
+              imagen={producto.producto.imagenes[0].imagenUrl}
+              descripcion={producto.producto.descripcion}
+              precio={producto.producto.precio}
+              imagenAutor={producto.producto.usuario.imagenUrl}
+              nombreAutor={producto.producto.usuario.nombreCompleto}
+              publicado={producto.producto.fechaCreacion}
+              setProductosDestacados={setProductosDestacados}
+            />
+          ))
+        ) : (
+          <h2>No hay Productos Destacados</h2>
+        )}
       </div>
     </div>
   )

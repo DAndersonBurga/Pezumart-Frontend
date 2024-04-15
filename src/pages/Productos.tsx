@@ -143,33 +143,31 @@ const Productos = () => {
       </div>
 
       <main className="listado-productos">
+        <div className="listado-productos-grid">
+          {productos?.length > 0 ? (
+            productos?.map(producto => (
+              <Producto
+                key={producto.id}
+                id={producto.id}
+                imagenUrl={producto.imagenes[0].imagenUrl}
+                nombre={producto.nombre}
+                precio={producto.precio}
+                nombreAutor={producto.usuario.nombreCompleto}
+                imagenAutor={producto.usuario.imagenUrl}
+              />
+            ))
+          ) : (
+            <h2 className="listado-productos-grid__mensaje">No se encontraron productos</h2>
+          )}
+        </div>
 
-          
-              <div className="listado-productos-grid">
-                {productos?.length > 0 ? (
-                  productos?.map(producto => (
-                    <Producto
-                      key={producto.id}
-                      id={producto.id}
-                      imagenUrl={producto.imagenes[0].imagenUrl}
-                      nombre={producto.nombre}
-                      precio={producto.precio}
-                      nombreAutor={producto.usuario.nombreCompleto}
-                      imagenAutor={producto.usuario.imagenUrl}
-                    />
-                  ))
-                ) : (
-                  <h2 className="listado-productos-grid__mensaje">No se encontraron productos</h2>
-                )}
-              </div>
-
-              {productos?.length > 0 && (
-                <Paginacion 
-                  paginaActual={paginaActual}
-                  totalPaginas={totalPaginas}
-                  setPaginaActual={setPaginaActual}
-                />
-              )}
+        {productos?.length > 0 && (
+          <Paginacion 
+            paginaActual={paginaActual}
+            totalPaginas={totalPaginas}
+            setPaginaActual={setPaginaActual}
+          />
+        )}
       </main>
     </div>
   )

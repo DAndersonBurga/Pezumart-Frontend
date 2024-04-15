@@ -75,17 +75,21 @@ const Home = () => {
         <h2 className="productos-heading">Productos Destacados<span></span></h2>
 
         <div className="productos-grid">
-            {productosDestacados.map(productoDestacado => (
-              <Producto
-                key={productoDestacado.id}
-                id={productoDestacado.producto.id}
-                imagenUrl={productoDestacado.producto.imagenes[0].imagenUrl}
-                nombre={productoDestacado.producto.nombre}
-                precio={productoDestacado.producto.precio}
-                nombreAutor={productoDestacado.producto.usuario.nombreCompleto}
-                imagenAutor={productoDestacado.producto.usuario.imagenUrl}
-              />
-            ))}
+            {productosDestacados.length > 0 ? (
+              productosDestacados.map(productoDestacado => (
+                <Producto
+                  key={productoDestacado.id}
+                  id={productoDestacado.producto.id}
+                  imagenUrl={productoDestacado.producto.imagenes[0].imagenUrl}
+                  nombre={productoDestacado.producto.nombre}
+                  precio={productoDestacado.producto.precio}
+                  nombreAutor={productoDestacado.producto.usuario.nombreCompleto}
+                  imagenAutor={productoDestacado.producto.usuario.imagenUrl}
+                />
+              ))
+            ) : (
+              <h2>No hay productos destacados</h2>
+            )}
         </div>
       </section>
 
@@ -111,17 +115,21 @@ const Home = () => {
         <h2 className="productos-heading">Ultimos Productos<span></span></h2>
 
         <div className="productos-grid">
-            {ultimosProductos?.map(producto => (
-              <Producto
-                id={producto.id}
-                key={producto.id}
-                imagenUrl={producto.imagenes[0].imagenUrl}
-                nombre={producto.nombre}
-                precio={producto.precio}
-                nombreAutor={producto.usuario.nombreCompleto}
-                imagenAutor={producto.usuario.imagenUrl}
-              />
-            ))}
+            {ultimosProductos.length > 0 ? (
+              ultimosProductos?.map(producto => (
+                <Producto
+                  id={producto.id}
+                  key={producto.id}
+                  imagenUrl={producto.imagenes[0].imagenUrl}
+                  nombre={producto.nombre}
+                  precio={producto.precio}
+                  nombreAutor={producto.usuario.nombreCompleto}
+                  imagenAutor={producto.usuario.imagenUrl}
+                />
+              ))
+            ) : (
+              <h2>No hay productos</h2>
+            )}
         </div>
 
         <Link
