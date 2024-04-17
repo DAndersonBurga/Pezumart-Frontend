@@ -14,6 +14,7 @@ import UsuarioEditar from "./pages/admin/UsuarioEditar"
 import ProductosDestacadosDashboard from "./pages/admin/ProductosDestacadosDashboard"
 import MisProductosDashBoard from "./pages/admin/MisProductosDashBoard"
 import ProtectedRouteAdmin from "./components/admin/ProtectedRouteAdmin"
+import MiProductoEditar from "./pages/admin/MiProductoEditar"
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
                 </Route>
 
                 <Route children path="mis-productos" element={<MisProductosDashBoard />}/>
+                  <Route children path="mis-productos/editar/:productoId" element={<MiProductoEditar />}/>
               </Route>
             </Route>
 

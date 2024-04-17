@@ -220,7 +220,7 @@ const ProductosDashboard = () => {
           draggable
           pauseOnHover
           theme="dark"
-      />
+        />
     </section>
   )
 }

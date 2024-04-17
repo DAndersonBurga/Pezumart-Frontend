@@ -29,25 +29,7 @@ const MiProducto = ({ id, descripcion,
 
     const fecha = new Date(fechaCreacion)
     const fechaCreacionString = fecha.toLocaleDateString()
-
-    const handleClickDestacarProducto = async (id: number) => {
-        const productoADestacar = {
-            "productoId" : id
-        }
-
-        try {
-            const response = await pezumartApi.post(`/producto/destacar`, {
-                ...productoADestacar
-            })
-    
-            if(response.status === 200) {
-                toast.success("Producto destacado")
-            }
-        } catch (error: any) {
-            toast.error(error.response.data.backendMessage)
-        }
-
-    }    
+ 
     
     const handleClickEliminarProducto = async (id: number) => {
         Swal.fire({
@@ -107,12 +89,13 @@ const MiProducto = ({ id, descripcion,
 
             <div className="producto-dashboard-info__botones">
 
-                <button
+                <Link
+                    to={`/admin/dashboard/mis-productos/editar/${id}`}
                     className="producto-dashboard-info__boton-destacado"
-                    onClick={() => handleClickDestacarProducto(id)}
                 >
                     Editar
-                </button>
+                </Link>
+ 
                 <button 
                     className="producto-dashboard-info__boton-eliminar"
                     onClick={() => handleClickEliminarProducto(id)}
